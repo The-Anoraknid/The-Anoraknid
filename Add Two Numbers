@@ -1,0 +1,32 @@
+function addTwoNumbers(list1, list2) {
+	let longerList = null;
+	let shorterList = null;
+	if (list1 > list2) {
+		longerList = list1;
+		shorterList = list2;
+	} else {
+		longerList = list2;
+		shorterList = list1;
+	}
+	let difference = longerList.length - shorterList.length;
+	for (let i = 0; i < (difference); i++) {
+		shorterList.push(0)
+	}
+	let length = longerList.length
+	let sum = [];
+	let carry = 0;
+	for (let i = 0; i < length; i++) {
+		let digit = list1[i] + list2[i] + carry;
+		if (digit < 10) {
+			sum.push(digit);
+			carry = 0;
+		} else {
+			sum.push(digit - 10);
+			carry = 1;
+		}
+	}
+	if (carry === 1) {
+		sum.push(1)
+	}
+	return sum;
+}
